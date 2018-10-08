@@ -1,0 +1,22 @@
+{
+  "name": "x-finance",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "dayjs": "1.7.7",
+    "eslint-config-standard": "12.0.0",
+    "node-fetch": "2.2.0",
+    "node-xlsx": "0.12.1",
+    "pg": "7.4.3",
+    "standard": "12.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "recreateDB": "cat schema.sql | PGPASSWORD=111 psql -U postgres --host localhost --port 15432 xfinance",
+    "sync": "npm run recreateDB && node sync-transactions.js && node sync-rates.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
