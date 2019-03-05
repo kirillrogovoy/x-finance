@@ -20,4 +20,4 @@ services:
     image: adminer
     restart: always
     ports:
-      - 9091:8080
+      - 9081:8080

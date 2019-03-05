@@ -10,6 +10,7 @@ async function main () {
 
   const reportsFolder = `${__dirname}/reports/`
   const reports = fs.readdirSync(reportsFolder)
+    .filter(f => f.endsWith('.xls'))
     .map(f => `${path.join(reportsFolder, f)}`)
     .map(extractTransactions)
 
@@ -25,8 +26,10 @@ async function main () {
   }
 
   await pgClient.query(`
-    DELETE FROM transaction WHERE description LIKE '%Перевод со своей карты%'
+    DELETE FROM transaction
+    WHERE description LIKE '%Перевод со своей карты%'
     OR description LIKE '%Перевод на свою карту%'
+    OR description LIKE '%Бонус Плюс%'
   `)
 }
 

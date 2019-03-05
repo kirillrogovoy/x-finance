@@ -40,6 +40,7 @@ CREATE SEQUENCE budget_id_seq;
 
 CREATE TABLE "public"."budget" (
     "id" integer DEFAULT nextval('budget_id_seq') NOT NULL,
+    "date" date,
     "category" character varying(256) NOT NULL,
     "description" character varying(1024) NOT NULL,
     "currency" character(3) NOT NULL,
@@ -48,11 +49,17 @@ CREATE TABLE "public"."budget" (
     CONSTRAINT "budget_id" PRIMARY KEY ("id")
 ) WITH (oids = false);
 
-INSERT INTO budget (category, description, currency, amount, tags) VALUES
-('Выдача наличных', 'Квартира в Запорожье', 'UAH', 3100, '{}'),
-('Переводы', 'Маме', 'UAH', 5025, '{}'),
-('Кафе, бары, рестораны', 'Лимит', 'UAH', 6000, '{}'),
-('Продукты питания', 'Лимит', 'UAH', 5000, '{}'),
-('Прочее', 'Мобильный счет', 'UAH', 160, '{}'),
-('Прочее', 'Прочие расходы', 'UAH', 5000, '{}')
+INSERT INTO budget (date, category, description, currency, amount, tags) VALUES
+(NULL, 'Выдача наличных', 'Квартира в Запорожье', 'UAH', 3100, '{}'),
+(NULL, 'Переводы', 'Маме', 'UAH', 5025, '{}'),
+(NULL, 'Кафе, бары, рестораны', 'Лимит', 'UAH', 6000, '{}'),
+(NULL, 'Продукты питания', 'Лимит', 'UAH', 5000, '{}'),
+(NULL, 'Прочее', 'Мобильный счет', 'UAH', 160, '{}'),
+(NULL, 'Прочее', 'Интернет', 'UAH', 140, '{}'),
+(NULL, 'Прочее', 'Apple Music', 'UAH', 130, '{}'),
+(NULL, 'Прочее', 'Apple iCloud', 'UAH', 30, '{}'),
+(NULL, 'Прочее', 'Patreon', 'UAH', 30, '{}'),
+(NULL, 'Прочее', 'Google', 'UAH', 160, '{}'),
+(NULL, 'Прочее', 'Gold Card', 'UAH', 20, '{}'),
+(NULL, 'Прочее', 'Прочие расходы', 'UAH', 1000, '{}')
 ;
